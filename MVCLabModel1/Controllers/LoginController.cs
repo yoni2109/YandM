@@ -19,12 +19,30 @@ namespace MVCLabModel1.Controllers
         {
             return View();
         }
+        public ActionResult Verify()
+        {
+            string rcvUserName = Request.Form["User.UserName"];
+            string rcvPassword = Request.Form["User.UserPassword"];
+            UsersDal dal = new UsersDal();
+            List <Users> usrobj =     
+               (from y in dal.users
+               where y.UserName.Equals(rcvUserName)
+                select y).ToList<Users>();
+
+            if(usrobj[0].UserPassword == rcvPassword)
+            {
+                ViewBag.signedin = usrobj[0];
+                return View("../Products/Cats");
+            }
+            ViewBag.message = "Wrong user name or password pls try again";
+            return View("Login");
+        }
         public ActionResult Submit()
         {
             UsersVM cvm = new UsersVM();
             Users userobj = new Users();
             UsersDal dal = new UsersDal();
-
+            
             userobj.FirstName = Request.Form["User.FirstName"];
             userobj.LastName = Request.Form["User.LastName"];
             userobj.UserPN = Request.Form["User.UserPN"];
@@ -48,4 +66,5 @@ namespace MVCLabModel1.Controllers
            
         }
     }
+   
 }
