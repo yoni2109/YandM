@@ -1,0 +1,32 @@
+﻿@model MVCLabModel1.Models.Products
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+    <h2>Add New Product</h2>
+    <table>
+        <tr>
+
+
+            <td>Product title</td>
+            <td>@Html.TextBoxFor(m => m.product_name) @Html.ValidationMessageFor(x => x.product_name)</td>
+        </tr>
+        <tr>
+            <td>Product Image</td>
+            <td>@Html.TextBoxFor(m => m.img_url)@Html.ValidationMessageFor(x => x.img_url)</td>
+        </tr>
+        <tr>
+            <td>Product Price</td>
+            <td>@Html.TextBoxFor(m => m.price)@Html.ValidationMessageFor(x => x.price)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input id="Submit1" type="submit" value="Add Customer" /></td>
+        </tr>
+    </table>
+</body>
+</html>
