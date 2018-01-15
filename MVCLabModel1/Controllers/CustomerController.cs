@@ -47,9 +47,9 @@ namespace YandM.Controllers
             CustomerDal dal = new CustomerDal();
             string searchValue = Request.Form["txtFirstName"];
             List<Customer> objCustomers =
-                (from x in dal.Customers
-                 where x.FirstName.Contains(searchValue)
-                 select x).ToList<Customer>();
+                (from y in dal.Customers
+                 where y.FirstName.Contains(searchValue)
+                 select y).ToList<Customer>();
             CustomerVM cvm = new CustomerVM();
             cvm.customer = new Customer();
             cvm.customers = objCustomers;
