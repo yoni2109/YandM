@@ -7,14 +7,14 @@ using System.Web;
 
 namespace YandM.Dal
 {
-    public class CustomerDal:DbContext
+    public class UsersDal:DbContext
     {
-        public DbSet<Customer>  Customers { get; set; }
+        public DbSet<Users>  users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Customer>().ToTable("tblCustomers");
+            modelBuilder.Entity<Users>().ToTable("Users_tbl");
         }
 
     }
