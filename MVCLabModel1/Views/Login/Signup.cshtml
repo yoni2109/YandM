@@ -1,0 +1,44 @@
+﻿@model YandM.Models.UsersVM
+@{
+    ViewBag.title = "Signup page";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+<h2>New Customer</h2>
+
+<form action="Submit" method="post">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td>@Html.TextBoxFor(m => m.user.FirstName) @Html.ValidationMessageFor(x => x.user.FirstName)</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>@Html.TextBoxFor(m => m.user.LastName)@Html.ValidationMessageFor(x => x.user.LastName)</td>
+        </tr>
+        <tr>
+            <td>User Name</td>
+            <td>@Html.TextBoxFor(m => m.user.UserName)@Html.ValidationMessageFor(x => x.user.UserName)</td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td>@Html.TextBoxFor(m => m.user.UserPN)@Html.ValidationMessageFor(x => x.user.UserPN)</td>
+        </tr>
+        <tr>
+            <td>E-mail</td>
+            <td>@Html.TextBoxFor(m => m.user.UserEmail)@Html.ValidationMessageFor(x => x.user.UserEmail)</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>@Html.TextBoxFor(m => m.user.UserPassword)@Html.ValidationMessageFor(x => x.user.UserPassword)</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input id="Submit1" type="submit" value="Add Customer" /></td>
+        </tr>
+    </table>
+    <p>
+    </p>
+
+</form>

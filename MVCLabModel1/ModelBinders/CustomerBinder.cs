@@ -16,9 +16,9 @@ namespace YandM.ModelBinders
             string customerLastName = objContext.Request.Form["txtLastName"];
             string customerCustomerNumber = objContext.Request.Form["txtCustomerNumber"];
 
-            Customer obj = new Customer() {FirstName = customerFirstName,
-                                            LastName = customerLastName,
-                                            CustomerNumber = customerCustomerNumber};
+            Users obj = new Users() {FirstName = customerFirstName,
+                                            LastName = customerLastName
+                                            };
 
             return obj;
         }
