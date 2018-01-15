@@ -1,0 +1,40 @@
+﻿@model YandM.Models.CustomerVM
+@using YandM.Models
+
+@{
+    ViewBag.Title = "Search Customer";
+}
+
+<h2>Search Customer</h2>
+<div>
+    <form action="SearchCustomers" method="post">
+        Enter First Name to search
+        <input id="Text1" name="txtFirstName" type="text" />
+        <br />
+        <input id="Submit1" type="submit" value="Search Customers" />
+    </form>
+
+</div>
+<p></p>
+<span style="color:blue">Customers Found</span>
+<br />
+@*<table>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Customer Number</td>
+    </tr>
+    @foreach (Customer obj in Model.customers)
+    {
+        <tr>
+            <td>@obj.FirstName</td>
+            <td>@obj.LastName</td>
+            <td>@obj.CustomerNumber</td>
+        </tr>
+    }
+</table>*@
+
+@Html.Partial("DisplayCustomers",Model)
+
+
+
