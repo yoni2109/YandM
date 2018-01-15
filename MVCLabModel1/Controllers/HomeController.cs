@@ -12,6 +12,7 @@ namespace YandM.Controllers
 
         public ActionResult About()
         {
+
             return View();
         }
 
