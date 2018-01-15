@@ -25,9 +25,18 @@
                     
                     <li>@Html.ActionLink("Dogs", "Dogs", "Products")</li>
                     <li>@Html.ActionLink("Cats", "Cats", "Products")</li>
-                    <li>@Html.ActionLink("Login","Login","Login")</li>
-                    <li>@Html.ActionLink("Sign-up", "Signup", "Login")</li>
-                    <li>@Html.ActionLink("Add Product to Catalog", "AddProducts", "Products")</li>
+                    @if (ViewBag.signedin != null)
+                    {
+                        string welcome = "Welcome " + ViewBag.signedin.UserName;
+                        <li style="color:white;position:center,absolute,fixed;">@welcome </li>
+                        <li>@Html.ActionLink("Add Product to Catalog", "AddProducts", "Products")</li>
+                       
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                        <li>@Html.ActionLink("Sign-up", "Signup", "Login")</li>
+                    }
                 </ul>
             </div>
         </div>
