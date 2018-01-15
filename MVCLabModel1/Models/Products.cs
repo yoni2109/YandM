@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MVCLabModel1.Models
+namespace YandM.Models
 {
     public class Products
     {
@@ -11,5 +11,6 @@ namespace MVCLabModel1.Models
         public string product_name { get; set; }
         public string img_url { get; set; }
         public string description { get; set; }
+        public string type { get; set; }
     }
 }
