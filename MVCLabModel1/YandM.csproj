@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="ModelBinders\CustomerBinder.cs" />
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\ProductsVM.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UsersVM.cs" />
     <Compile Include="Models\Products.cs" />

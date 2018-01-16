@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using YandM.Models;
 using YandM.Dal;
+using System.Data.Entity.Infrastructure;
 
 namespace MVCLabModel1.Controllers
 {
@@ -23,22 +24,20 @@ namespace MVCLabModel1.Controllers
             return View();
         }
         public ActionResult Verify()
-        {
-            string rcvUserName = Request.Form["User.UserName"];
-            string rcvPassword = Request.Form["User.UserPassword"];
+        {  
+            string rcvUserName = Request.Form["user.UserName"];
+            string rcvPassword = Request.Form["user.UserPassword"];
             UsersDal dal = new UsersDal();
             List <Users> usrobj =     
                (from y in dal.users
                where y.UserName.Equals(rcvUserName)
                 select y).ToList<Users>();
-
             if(usrobj[0].UserPassword == rcvPassword)
             {
                 AdminDal adal = new AdminDal();
                 List<Admin> adminlist = (from x in adal.admin where x.AUserName.Equals(rcvUserName) select x).ToList<Admin>();
                 if (adminlist.Capacity>0) Session["isadmin"] = true;
                 else Session["isadmin"] = false;
-                ViewBag.signedin = usrobj[0];
                 Session["signedin"] = usrobj[0];
                 return View("../Products/Cats");
             }
@@ -46,9 +45,8 @@ namespace MVCLabModel1.Controllers
             return View("Login");
         }
 
-        public ActionResult Submit()
-        {
-            UsersVM cvm = new UsersVM();
+        public ActionResult SubmitSignup()
+        {           
             Users userobj = new Users();
             UsersDal dal = new UsersDal();
                                   
@@ -61,15 +59,22 @@ namespace MVCLabModel1.Controllers
 
             if (ModelState.IsValid)
             {
-                dal.users.Add(userobj);
-                dal.SaveChanges();
-                cvm.user = new Users();
+                try
+                {
+                    dal.users.Add(userobj);
+                    dal.SaveChanges();
+                }
+                catch(DbUpdateException ex)
+                {
+                    UsersVM passthis = new UsersVM();
+                    passthis.user = userobj;
+                    dal.users.Remove(userobj);
+                    ViewBag.username = "this user name is already taken choose another";
+                    return View("Signup", passthis);
+
+                }
+                
             }
-            else
-                cvm.user = userobj;
-
-
-            cvm.users_list = dal.users.ToList<Users>();
 
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
            

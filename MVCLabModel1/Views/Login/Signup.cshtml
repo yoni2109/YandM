@@ -6,9 +6,9 @@
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-<h2>New Customer</h2>
+<h2>Signup Form</h2>
 
-<form action="Submit" method="post">
+<form action="SubmitSignup" method="post">
     <table>
         <tr>
             <td>First Name</td>
@@ -20,7 +20,8 @@
         </tr>
         <tr>
             <td>User Name</td>
-            <td>@Html.TextBoxFor(m => m.user.UserName) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserName)</span></td>
+            <td>@Html.TextBoxFor(m => m.user.UserName) @if (ViewBag.username != null)
+            {<span style="color:red">@ViewBag.username</span> }<span style="color:red">@Html.ValidationMessageFor(x => x.user.UserName)</span></td>
         </tr>
         <tr>
             <td>Phone Number</td>
@@ -32,7 +33,7 @@
         </tr>
         <tr>
             <td>Password</td>
-            <td>@Html.TextBoxFor(m => m.user.UserPassword) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserPassword)</span></td>
+            <td>@Html.PasswordFor(m => m.user.UserPassword) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserPassword)</span></td>
         </tr>
         <tr>
             <td colspan="2"><input id="Submit1" type="submit" value="Sign up" /></td>
