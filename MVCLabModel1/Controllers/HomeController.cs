@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace YandM.Controllers
 {
     public class HomeController : Controller
@@ -18,7 +19,7 @@ namespace YandM.Controllers
 
         public ActionResult ShowHomePage()
         {
-           
+            
             return View();
         }
         

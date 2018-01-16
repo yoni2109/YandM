@@ -31,18 +31,23 @@ namespace MVCLabModel1.Controllers
 
             if(usrobj[0].UserPassword == rcvPassword)
             {
+                AdminDal adal = new AdminDal();
+                List<Admin> adminlist = (from x in adal.admin where x.AUserName.Equals(rcvUserName) select x).ToList<Admin>();
+                if (adminlist.Capacity>0) ViewBag.isadmin = true;
+                else ViewBag.isadmin = false;
                 ViewBag.signedin = usrobj[0];
                 return View("../Products/Cats");
             }
             ViewBag.message = "Wrong user name or password pls try again";
             return View("Login");
         }
+
         public ActionResult Submit()
         {
             UsersVM cvm = new UsersVM();
             Users userobj = new Users();
             UsersDal dal = new UsersDal();
-            
+                                  
             userobj.FirstName = Request.Form["User.FirstName"];
             userobj.LastName = Request.Form["User.LastName"];
             userobj.UserPN = Request.Form["User.UserPN"];

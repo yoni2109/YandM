@@ -29,8 +29,11 @@
                     {
                         string welcome = "Welcome " + ViewBag.signedin.UserName;
                         <li style="color:white;position:center,absolute,fixed;">@welcome </li>
-                        <li>@Html.ActionLink("Add Product to Catalog", "AddProducts", "Products")</li>
-                       
+                        if (ViewBag.isadmin)
+                        {
+                            <li>@Html.ActionLink("Add Product to Catalog", "AddProducts", "Products")</li>
+                        }
+
                     }
                     else
                     {

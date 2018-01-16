@@ -132,12 +132,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Dal\AdminDal.cs" />
     <Compile Include="Dal\ProductsDal.cs" />
     <Compile Include="Dal\UsersDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ModelBinders\CustomerBinder.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UsersVM.cs" />
     <Compile Include="Models\Products.cs" />

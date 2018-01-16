@@ -12,27 +12,27 @@
     <table>
         <tr>
             <td>First Name</td>
-            <td>@Html.TextBoxFor(m => m.user.FirstName) @Html.ValidationMessageFor(x => x.user.FirstName)</td>
+            <td>@Html.TextBoxFor(m => m.user.FirstName) <span style="color:red">@Html.ValidationMessageFor(x => x.user.FirstName)</span></td>
         </tr>
         <tr>
             <td>Last Name</td>
-            <td>@Html.TextBoxFor(m => m.user.LastName)@Html.ValidationMessageFor(x => x.user.LastName)</td>
+            <td>@Html.TextBoxFor(m => m.user.LastName) <span style="color:red">@Html.ValidationMessageFor(x => x.user.LastName)</span></td>
         </tr>
         <tr>
             <td>User Name</td>
-            <td>@Html.TextBoxFor(m => m.user.UserName)@Html.ValidationMessageFor(x => x.user.UserName)</td>
+            <td>@Html.TextBoxFor(m => m.user.UserName) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserName)</span></td>
         </tr>
         <tr>
             <td>Phone Number</td>
-            <td>@Html.TextBoxFor(m => m.user.UserPN)@Html.ValidationMessageFor(x => x.user.UserPN)</td>
+            <td>@Html.TextBoxFor(m => m.user.UserPN) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserPN)</span></td>
         </tr>
         <tr>
             <td>E-mail</td>
-            <td>@Html.TextBoxFor(m => m.user.UserEmail)@Html.ValidationMessageFor(x => x.user.UserEmail)</td>
+            <td>@Html.TextBoxFor(m => m.user.UserEmail) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserEmail)</span></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td>@Html.TextBoxFor(m => m.user.UserPassword)@Html.ValidationMessageFor(x => x.user.UserPassword)</td>
+            <td>@Html.TextBoxFor(m => m.user.UserPassword) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserPassword)</span></td>
         </tr>
         <tr>
             <td colspan="2"><input id="Submit1" type="submit" value="Sign up" /></td>
