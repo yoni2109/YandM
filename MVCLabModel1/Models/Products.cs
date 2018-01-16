@@ -10,8 +10,8 @@ namespace YandM.Models
     {
         [Required(ErrorMessage="Enter Price")]
         public int price { get; set; }
-        [Required(ErrorMessage = "Enter Product ID")]
         [Key]
+        //[Required(ErrorMessage = "Enter Product ID")]
         public int productId { get; set; }
         [Required(ErrorMessage = "Enter Name")]
         public string product_name { get; set; }

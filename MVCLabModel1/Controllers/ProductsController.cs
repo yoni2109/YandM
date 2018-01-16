@@ -55,7 +55,7 @@ namespace MVCLabModel1.Controllers
             productobj.product_name = Request.Form["product_name"];
             productobj.img_url = Request.Form["img_url"];
             productobj.price = Convert.ToInt32(Request.Form["price"]);
-            productobj.productId = Convert.ToInt32(Request.Form["productId"]);
+            //productobj.productId = Convert.ToInt32(Request.Form["productId"]);
             productobj.description = Request.Form["description"];
             productobj.type = Request.Form["type"];
 
@@ -75,5 +75,11 @@ namespace MVCLabModel1.Controllers
 
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
+        public ActionResult search()
+        {
+            
+            return View("");
+        }
+           
     }
 }

@@ -1,4 +1,6 @@
 ﻿@using YandM.Models
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +28,7 @@
                     
                     <li>@Html.ActionLink("Dogs", "Dogs", "Products")</li>
                     <li>@Html.ActionLink("Cats", "Cats", "Products")</li>
+                    
                     @if (Session["signedin"] != null)
                     {
                         string welcome = "Welcome " + (Session["signedin"] as Users).UserName;
@@ -40,10 +43,28 @@
                     {
                         <li>@Html.ActionLink("Login", "Login", "Login")</li>
                         <li>@Html.ActionLink("Sign-up", "Signup", "Login")</li>
+                        @*<li><input id="Text1" type="text" placeholder="Search Products"/></li>
+                        <li><input id="Button1" type="button" value="Search" onclick="location.href=
+                                   @Url.Action("search","Products")'" /></li>*@
+                        @*<li>
+                            <form action="search" method="post">
+                                @Html.TextBoxFor(m => m.Products.product_name)
+
+                            </form>
+                        </li>*@
+
                     }
+
                 </ul>
+
+                
+                
+                    
+                
             </div>
+
         </div>
+
     </div>
     <div class="container body-content">
         @RenderBody()
