@@ -17,10 +17,15 @@ namespace YandM.Controllers
 
             return View();
         }
-
+        public ActionResult placeOrder()
+        {
+            string x = Request.Form["pname"];
+            return View("ShowHomePage");
+        }
         public ActionResult ShowHomePage()
         {
             ProductsDal dal = new ProductsDal();
+            ProductsVM products = new ProductsVM();
             List<Products> dproducts =
                 (from y in dal.products
                  select y).ToList<Products>();
@@ -29,9 +34,10 @@ namespace YandM.Controllers
                 ViewBag.dogproducts = dproducts;
             }
             else ViewBag.dogproducts = null;
+            products.products_list = dproducts;
 
 
-            return View();
+            return View(products);
         }
         
     }

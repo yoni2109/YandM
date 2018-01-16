@@ -1,46 +1,45 @@
-﻿@using YandM.Models
+﻿@model YandM.Models.ProductsVM
+@using YandM.Models
 @{
     ViewBag.Title = "Welcome to Y&M pet shop";
 }
 <h2>Hilights</h2>
+<h1>@ViewBag.str</h1>
 <head>
     <style>
         .grid-container {
             display: grid;
             grid-template-columns: auto auto auto;
-            grid-gap: 100px 100px;
+            grid-gap: 50px 50px;
             background-color: white;
             padding: 50px;
         }
 
         .grid-item {
             background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 20px;
+            border: 0.5px solid rgba(0, 0, 0, 0.8);
+            padding: 10px;
             font-size: 30px;
             text-align: center;
         }
     </style>
 </head>
-<div class="grid-container">
-    @*<div class="grid-item">
-        <header>Product Name</header>
-        <img src="https://www.budgetpetproducts.com.au/new/images/category_thumbnail/DOG_GROOMING.jpg"
-             width="150" height="150">
-        <footer>price:50</footer>
-        <input id="Button1" type="button" value="Buy It Now" />
-    </div>*@
-    @if (ViewBag.dogproducts != null)
-    {
-        foreach (Products x in ViewBag.dogproducts)
+
+    <div class="grid-container">
+        @if (Model.products_list != null)
         {
-            <div class="grid-item">
-                <header>@x.product_name</header>
-                <img src=@x.img_url
-                     width="150" height="150">
-                <footer>@x.price</footer>
-                <input id="Button1" type="button" value="Buy It Now" />
-            </div>
+            foreach (Products x in Model.products_list)
+            {   
+                <form method="post" action="placeOrder">
+                    <div class="grid-item">
+                        <div name="pname" value=@x.product_name>@x.product_name</div>                   
+                        <img src=@x.img_url
+                             width="150" height="150">
+                        <div>@x.price $</div>
+                        <input id="Button1" type="submit" value="Buy Now" size="50" />
+                    </div>
+                </form>
+             }
         }
-    }
 </div>
+
