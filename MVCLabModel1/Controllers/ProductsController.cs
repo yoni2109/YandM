@@ -30,6 +30,16 @@ namespace MVCLabModel1.Controllers
         }
         public ActionResult Cats()
         {
+            ProductsDal dal = new ProductsDal();
+            List<Products> cproducts =
+                (from y in dal.products
+                 where y.type.Equals("Cats")
+                 select y).ToList<Products>();
+            if (cproducts.Capacity > 0)
+            {
+                ViewBag.catproducts = cproducts;
+            }
+            else ViewBag.catproducts = null;
             return View("Cats");
         }
         public ActionResult AddProducts()

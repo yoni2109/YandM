@@ -8,18 +8,18 @@ namespace YandM.Models
 {
     public class Products
     {
-        [Required]
+        [Required(ErrorMessage="Enter Price")]
         public int price { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter Product ID")]
         [Key]
         public int productId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter Name")]
         public string product_name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter URL Image")]
         public string img_url { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter Description")]
         public string description { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Choose Dogs Or Cats")]
         public string type { get; set; }
 
     }
