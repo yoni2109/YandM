@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using YandM.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Y & M", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Y & M", "ShowHomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -25,11 +26,11 @@
                     
                     <li>@Html.ActionLink("Dogs", "Dogs", "Products")</li>
                     <li>@Html.ActionLink("Cats", "Cats", "Products")</li>
-                    @if (ViewBag.signedin != null)
+                    @if (Session["signedin"] != null)
                     {
-                        string welcome = "Welcome " + ViewBag.signedin.UserName;
+                        string welcome = "Welcome " + (Session["signedin"] as Users).UserName;
                         <li style="color:white;position:center,absolute,fixed;">@welcome </li>
-                        if (ViewBag.isadmin)
+                        if (Convert.ToBoolean(Session["isadmin"]))
                         {
                             <li>@Html.ActionLink("Add Product to Catalog", "AddProducts", "Products")</li>
                         }

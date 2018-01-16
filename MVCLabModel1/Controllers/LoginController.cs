@@ -13,6 +13,9 @@ namespace MVCLabModel1.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            //AdminDal a = new AdminDal();
+            //a.admin.Add(new Admin() { AUserName = "yoni2109" });
+            //a.SaveChanges();
             return View();
         }
         public ActionResult Signup()
@@ -33,9 +36,10 @@ namespace MVCLabModel1.Controllers
             {
                 AdminDal adal = new AdminDal();
                 List<Admin> adminlist = (from x in adal.admin where x.AUserName.Equals(rcvUserName) select x).ToList<Admin>();
-                if (adminlist.Capacity>0) ViewBag.isadmin = true;
-                else ViewBag.isadmin = false;
+                if (adminlist.Capacity>0) Session["isadmin"] = true;
+                else Session["isadmin"] = false;
                 ViewBag.signedin = usrobj[0];
+                Session["signedin"] = usrobj[0];
                 return View("../Products/Cats");
             }
             ViewBag.message = "Wrong user name or password pls try again";
