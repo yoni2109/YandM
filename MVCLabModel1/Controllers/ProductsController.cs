@@ -26,21 +26,21 @@ namespace MVCLabModel1.Controllers
                 ViewBag.dogproducts = dproducts;
             }
             else ViewBag.dogproducts = null;
-            return View("Dogs");
+            return View("../Home/ShowHomePage");
         }
         public ActionResult Cats()
         {
             ProductsDal dal = new ProductsDal();
-            List<Products> cproducts =
+            List<Products> dproducts =
                 (from y in dal.products
                  where y.type.Equals("Cats")
                  select y).ToList<Products>();
-            if (cproducts.Capacity > 0)
+            if (dproducts.Capacity > 0)
             {
-                ViewBag.catproducts = cproducts;
+                ViewBag.dogproducts = dproducts;
             }
-            else ViewBag.catproducts = null;
-            return View("Cats");
+            else ViewBag.dogproducts = null;
+            return View("../Home/ShowHomePage");
         }
         public ActionResult AddProducts()
         {

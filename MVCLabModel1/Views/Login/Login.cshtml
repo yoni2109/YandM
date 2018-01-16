@@ -11,16 +11,17 @@
 @if(ViewBag.message !=null)
  {
     <span style="color:red">@ViewBag.message</span>
- }
+    ViewBag.message = null;
+}
 <form action="Verify" method="post">
     <table>
         <tr>
             <td>User Name</td>
-            <td>@Html.TextBoxFor(m => m.user.UserName) @Html.ValidationMessageFor(x => x.user.UserName)</td>
+            <td>@Html.TextBoxFor(m => m.user.UserName)<span style="color:red"> @Html.ValidationMessageFor(x => x.user.UserName)</span></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td>@Html.PasswordFor(m => m.user.UserPassword)@Html.ValidationMessageFor(x => x.user.UserPassword)</td>
+            <td>@Html.PasswordFor(m => m.user.UserPassword) <span style="color:red">@Html.ValidationMessageFor(x => x.user.UserPassword)</span></td>
         </tr>
         <tr>
             <td colspan="2"><input id="Submit1" type="submit" value="Log in" /></td>
