@@ -1,7 +1,5 @@
 ﻿@model YandM.Models.Products
 
-
-
 <head>
     <meta name="viewport" content="width=device-width" />
 
@@ -9,10 +7,10 @@
 
     <body>
         <h2>Add New Product</h2>
-        <form action="Submit" method="post">
+        <form action="Submit" method="post" />
             <table>
                 <tr>
-                    <td>Product title</td>
+                    <td>Product Name</td>
                     <td>@Html.TextBoxFor(m => m.product_name) @Html.ValidationMessageFor(x => x.product_name)</td>
                 </tr>
                 <tr>
@@ -22,9 +20,26 @@
                 <tr>
                     <td>Product Price</td>
                     <td>@Html.TextBoxFor(m => m.price)@Html.ValidationMessageFor(x => x.price)</td>
+                    </tr>
+                <tr>
+                    <td>Product ID</td>
+                    <td>@Html.TextBoxFor(m => m.productId)@Html.ValidationMessageFor(x => x.productId)</td>
+
                 </tr>
                 <tr>
-                    <td colspan="2"><input id="Submit1" type="submit" value="Add Customer" /></td>
+                    <td>Product Description</td>
+                    <td>@Html.TextBoxFor(m => m.description)@Html.ValidationMessageFor(x => x.description)</td>
+                </tr>
+                <tr>
+                    <td>Type:</td>
+                    <td>@Html.DropDownListFor(
+                       m=>m.type, new List<SelectListItem>
+                                 { new SelectListItem { Text = "Dogs", Value = "Dogs"},
+                                   new SelectListItem { Text = "Cats", Value = "Cats"},
+                                   })</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input id="Submit1" type="submit" value="Add Product" /></td>
                 </tr>
             </table>
 </body>
