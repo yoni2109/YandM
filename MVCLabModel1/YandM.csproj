@@ -133,6 +133,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Dal\AdminDal.cs" />
+    <Compile Include="Dal\OrderDal.cs" />
     <Compile Include="Dal\ProductsDal.cs" />
     <Compile Include="Dal\UsersDal.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,6 +141,7 @@
     </Compile>
     <Compile Include="ModelBinders\CustomerBinder.cs" />
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ProductsVM.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\UsersVM.cs" />

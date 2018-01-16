@@ -19,7 +19,8 @@ namespace YandM.Controllers
         }
         public ActionResult placeOrder()
         {
-            string x = Request.Form["pname"];
+            var x = Request.Form["pid"];
+
             return View("ShowHomePage");
         }
         public ActionResult ShowHomePage()
@@ -33,7 +34,7 @@ namespace YandM.Controllers
             {
                 ViewBag.dogproducts = dproducts;
             }
-            else ViewBag.dogproducts = null;
+            else return View();
             products.products_list = dproducts;
 
 
