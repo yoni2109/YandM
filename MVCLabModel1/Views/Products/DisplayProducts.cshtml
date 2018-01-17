@@ -1,0 +1,7 @@
+﻿@model YandM.Models.ProductsVM
+@using YandM.Models
+@{ 
+    WebGrid obj = new WebGrid(Model.products_list);
+}
+
+@obj.GetHtml()

@@ -1,5 +1,5 @@
-﻿@model YandM.Models.Products
-
+﻿@model YandM.Models.ProductsVM
+@using YandM.Models
 <head>
 <meta name="viewport" content="width=device-width" />
 </head>
@@ -14,15 +14,15 @@
             <table>
                 <tr>
                     <td>Product Name</td>
-                    <td>@Html.TextBoxFor(m => m.product_name) @Html.ValidationMessageFor(x => x.product_name)</td>
+                    <td>@Html.TextBoxFor(m => m.product.product_name) @Html.ValidationMessageFor(x => x.product.product_name)</td>
                 </tr>
                 <tr>
                     <td>Product Image</td>
-                    <td>@Html.TextBoxFor(m => m.img_url)@Html.ValidationMessageFor(x => x.img_url)</td>
+                    <td>@Html.TextBoxFor(m => m.product.img_url)@Html.ValidationMessageFor(x => x.product.img_url)</td>
                 </tr>
                 <tr>
                     <td>Product Price</td>
-                    <td>@Html.TextBoxFor(m => m.price)@Html.ValidationMessageFor(x => x.price)</td>
+                    <td>@Html.TextBoxFor(m => m.product.price)@Html.ValidationMessageFor(x => x.product.price)</td>
                     </tr>
                 @*<tr>
                     <td>Product ID</td>
@@ -31,12 +31,12 @@
                 </tr>*@
                 <tr>
                     <td>Product Description</td>
-                    <td>@Html.TextBoxFor(m => m.description)@Html.ValidationMessageFor(x => x.description)</td>
+                    <td>@Html.TextBoxFor(m => m.product.description)@Html.ValidationMessageFor(x => x.product.description)</td>
                 </tr>
                 <tr>
                     <td>Type:</td>
                     <td>@Html.DropDownListFor(
-                       m=>m.type, new List<SelectListItem>
+                       m=>m.product.type, new List<SelectListItem>
                                  { new SelectListItem { Text = "Dogs", Value = "Dogs"},
                                    new SelectListItem { Text = "Cats", Value = "Cats"},
                                    })</td>
@@ -45,5 +45,7 @@
                     <td colspan="2"><input id="Submit1" type="submit" value="Add Product" /></td>
                 </tr>
             </table>
+        @Html.Partial("DisplayProducts", Model)
 </body>
+
 
