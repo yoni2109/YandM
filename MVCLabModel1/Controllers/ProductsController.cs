@@ -18,29 +18,24 @@ namespace MVCLabModel1.Controllers
         public ActionResult Dogs()
         {
             ProductsDal dal = new ProductsDal();
-            List<Products> dproducts = 
+            ProductsVM productsV = new ProductsVM();
+            productsV.products_list =
                 (from y in dal.products
-                 where y.type.Equals("Dogs") select y).ToList<Products>();
-            if (dproducts.Capacity > 0)
-            {
-                ViewBag.dogproducts = dproducts;
-            }
-            else ViewBag.dogproducts = null;
-            return View("../Home/ShowHomePage");
+                 where y.type.Equals("Dogs")
+                 select y).ToList<Products>();
+
+            return View("../Home/ShowHomePage", productsV);
         }
         public ActionResult Cats()
         {
             ProductsDal dal = new ProductsDal();
-            List<Products> dproducts =
+            ProductsVM productsV = new ProductsVM();
+            productsV.products_list =
                 (from y in dal.products
                  where y.type.Equals("Cats")
                  select y).ToList<Products>();
-            if (dproducts.Capacity > 0)
-            {
-                ViewBag.dogproducts = dproducts;
-            }
-            else ViewBag.dogproducts = null;
-            return View("../Home/ShowHomePage");
+
+            return View("../Home/ShowHomePage", productsV);
         }
         public ActionResult AddProducts()
         {
