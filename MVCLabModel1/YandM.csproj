@@ -128,7 +128,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -189,17 +188,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\ShowHomePage.cshtml" />
-    <Content Include="Views\Customer\Customer.cshtml" />
-    <Content Include="Views\Customer\Enter.cshtml" />
-    <Content Include="Views\Customer\SearchCustomer.cshtml" />
-    <Content Include="Views\Customer\DisplayCustomers.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Signup.cshtml" />
-    <Content Include="Views\Products\Dogs.cshtml" />
-    <Content Include="Views\Products\Cats.cshtml" />
     <Content Include="Views\Products\AddProducts.cshtml" />
-    <Content Include="Views\Products\search.cshtml" />
     <Content Include="Views\Products\DisplayProducts.cshtml" />
+    <Content Include="Views\Products\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

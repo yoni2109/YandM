@@ -4,10 +4,9 @@
     ViewBag.Title = "Welcome to Y&M pet shop";
     if(ViewBag.succeded != null)
     {
-       <div>
-           $(document).ready(Function (){alert('@ViewBag.succeded');});
-       </div>
-       <div>ViewBag.succeded</div>
+        
+    <script language="javascript">alert('order submited succesfully, our team will contact you soon')</script>
+        <div></div>
         ViewBag.succeded = null;
     }
 }
@@ -35,7 +34,10 @@
         }
     </style>
 </head>
-<body> 
+<body>
+    <br/>
+    <br />
+    <br />
     <div>
     <div id="status"></div>
     <h2>Hilights</h2>
@@ -45,8 +47,8 @@
             {   int i=0;
                 foreach (Products x in Model.products_list)
                 {
-                        <div class="grid-item">
-                        <form method="post" action=@Url.Action("placeOrder","Home")>
+                        <div class='grid-item'>
+                        <form method='post' action=@Url.Action("placeOrder","Home")>
                             <input type="hidden" name="pid" value=@x.productId>
                             <div>@x.product_name</div>
                             <img src=@x.img_url
@@ -60,29 +62,7 @@
             }
         </div>
        
-        @*<script language="javascript">
-            $("#status").text("Loading");
-            $.get("GetproductsJson", null, BindProducts);
-            function BindProducts(products) {
 
-                var div = $("#pGrid");
-                for (i = 0; i < products.length; i++) {
-                    var newitem = "<div class=\"grid-item\">"
-                        + "<form method=\"post\"action=" +@Url.Action("placeOrder", "Home") +">"
-                        + "<input type=\"hidden\" name=\"pid\" value=" + products[i].productId + ">"
-                        + "<div>" + products[i].product_name + "</div>"
-                        + "<img src=" + products[i].img_url + "width=\"150\" height=\"150\" />"
-                        + "<div>" + products[i].price + " $</div>"
-                        + "<input id=\"Button1\" type=\"submit\" value=\"Buy Now\" onclick = \"return  confirm('do you want to place order ?')\" />"
-                        + "</form>"
-                        + "</div>";
-                    div.append(newitem);
-                }
-                $("#status").text("LOADING");
-
-
-            }
-        </script>*@
     
     </div>
 </body>

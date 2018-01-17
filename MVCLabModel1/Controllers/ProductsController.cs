@@ -5,16 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using YandM.Models;
 using YandM.Dal;
+using System.Data.Entity.Infrastructure;
 
 namespace MVCLabModel1.Controllers
 {
     public class ProductsController : Controller
     {
-        // GET: Products
-        public ActionResult Index()
-        {
-            return View();
-        }
+
         public ActionResult Dogs()
         {
             ProductsDal dal = new ProductsDal();
@@ -23,7 +20,6 @@ namespace MVCLabModel1.Controllers
                 (from y in dal.products
                  where y.type.Equals("Dogs")
                  select y).ToList<Products>();
-
             return View("../Home/ShowHomePage", productsV);
         }
         public ActionResult Cats()
@@ -39,67 +35,57 @@ namespace MVCLabModel1.Controllers
         }
         public ActionResult AddProducts()
         {
-            //string product_name = Request.Form["product_name"];
             ProductsDal dal = new ProductsDal();
             ProductsVM products = new ProductsVM();
-            List<Products> dproducts =
-                (from y in dal.products
-                 select y).ToList<Products>();
-            if (dproducts.Count > 0)
-            {
-                ViewBag.dogproducts = dproducts;
-            }
-            else ViewBag.dogproducts = null;
-            products.products_list = dproducts;
+            products.products_list = dal.products.ToList<Products>();
             return View(products);
-            //return View("AddProducts");
         }
         public ActionResult Submit()
         {
-
             Products productobj = new Products();
             ProductsDal dal = new ProductsDal();
-
             productobj.product_name = Request.Form["product.product_name"];
             productobj.img_url = Request.Form["product.img_url"];
             productobj.price = Convert.ToInt32(Request.Form["product.price"]);
-            //productobj.productId = Convert.ToInt32(Request.Form["productId"]);
             productobj.description = Request.Form["product.description"];
             productobj.type = Request.Form["product.type"];
-
-
-
             if (ModelState.IsValid)
             {
                 dal.products.Add(productobj);
-                dal.SaveChanges();
-                //cvm.user = new Users();
+                try
+                {
+                    dal.SaveChanges();
+                }
+                catch(DbUpdateException ex)
+                {
+                    //handle exception
+                }
             }
-            //else
-                //cvm.user = userobj;
-
-
-            //cvm.users_list = dal.users.ToList<Users>();
-
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
+
+        public ActionResult getordersJson()
+        {
+            OrderDal dal = new OrderDal();
+            List<Order> orders = dal.order.ToList<Order>();
+            return Json(orders, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Orders()
+        {
+            return View();
+        }
+
         public ActionResult search()
         {
-
             string product_name = Request.Form["product_name"];
             ProductsDal dal = new ProductsDal();
             ProductsVM products = new ProductsVM();
-            List<Products> dproducts =
+            products.products_list =
                 (from y in dal.products
-                 where y.product_name.Contains(product_name) select y).ToList<Products>();
-            if (dproducts.Count > 0)
-            {
-                ViewBag.dogproducts = dproducts;
-            }
-            else ViewBag.dogproducts = null;
-            products.products_list = dproducts;
-            return View(products); 
-            
+                 where y.product_name.Contains(product_name) || y.type.Equals(product_name)  select y).ToList<Products>();
+            return View("../Home/ShowHomePage", products);
+
         }
            
     }

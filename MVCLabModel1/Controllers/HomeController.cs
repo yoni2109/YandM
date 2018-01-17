@@ -11,28 +11,15 @@ namespace YandM.Controllers
 {
     public class HomeController : Controller
     {
-       
-
-        public ActionResult About()
+        public ActionResult placeOrder()// this action is called whe pressing "buy now" on products
         {
-
-            return View();
-        }
-        public ActionResult GetproductsJson()
-        {
+            int pid = Convert.ToInt32(Request.Form["pid"]);
             ProductsDal dal = new ProductsDal();
-            List<Products> products = dal.products.ToList<Products>();
-            return Json(products,JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult placeOrder()
-        {
-            int x = Convert.ToInt32(Request.Form["pid"]);
-            ProductsDal dal = new ProductsDal();
-            Products ordered = (from y in dal.products where y.productId.Equals(x) select y).ToList<Products>()[0];
-            Users user = (Session["signedin"] as Users);
+            Products ordered = (from y in dal.products where y.productId.Equals(pid) select y).ToList<Products>()[0];//grabs the product that was "ordered" from the db into current variable
+            Users user = (Session["signedin"] as Users);//the user who comiitted the "buy now" button
             if (user != null && ordered != null)
             {
+                //inserting the order whith all its details to db
                 OrderDal odal = new OrderDal();
                 odal.order.Add(new Order()
                 {
@@ -55,25 +42,15 @@ namespace YandM.Controllers
                 }
                 ViewBag.succeded = "order submited succesfully, our team will contact you soon";
             }
+
             return ShowHomePage();
         }
 
         public ActionResult ShowHomePage()
         {
-            ProductsDal dal = new ProductsDal();
-            ProductsVM products = new ProductsVM();
-            List<Products> dproducts =
-                (from y in dal.products
-                 select y).ToList<Products>();
-            if (dproducts.Count > 0)
-            {
-                ViewBag.dogproducts = dproducts;
-            }
-            else return View();
-            products.products_list = dproducts;
 
-
-            return View("ShowHomePage",products);
+            return View("ShowHomePage",new ProductsVM() {
+            products_list=((new ProductsDal()).products.ToList<Products>())});
         }
         
     }

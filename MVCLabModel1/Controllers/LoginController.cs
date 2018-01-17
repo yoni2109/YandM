@@ -7,16 +7,12 @@ using YandM.Models;
 using YandM.Dal;
 using System.Data.Entity.Infrastructure;
 
-namespace MVCLabModel1.Controllers
+namespace YandM.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
         public ActionResult Login()
         {
-            //AdminDal a = new AdminDal();
-            //a.admin.Add(new Admin() { AUserName = "yoni2109" });
-            //a.SaveChanges();
             return View();
         }
         public ActionResult Signup()
@@ -39,12 +35,19 @@ namespace MVCLabModel1.Controllers
                 if (adminlist.Capacity>0) Session["isadmin"] = true;
                 else Session["isadmin"] = false;
                 Session["signedin"] = usrobj[0];
-                return View("../Products/Cats");
+                return View("../Home/ShowHomePage", (new ProductsVM() { products_list = (new ProductsDal().products.ToList()) }));
             }
             ViewBag.message = "Wrong user name or password pls try again";
             return View("Login");
         }
+        public ActionResult Logout()
+        {
+            Session["signedin"] = null;
+            Session["isadmin"] = false;
 
+            return View("../Home/ShowHomePage", (new ProductsVM() { products_list = (new ProductsDal().products.ToList()) }));
+
+        }
         public ActionResult SubmitSignup()
         {           
             Users userobj = new Users();
@@ -71,12 +74,11 @@ namespace MVCLabModel1.Controllers
                     dal.users.Remove(userobj);
                     ViewBag.username = "this user name is already taken choose another";
                     return View("Signup", passthis);
-
                 }
                 
             }
 
-            return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
+            return View("../Home/ShowHomePage", (new ProductsVM() { products_list = (new ProductsDal().products.ToList()) }));
            
         }
     }

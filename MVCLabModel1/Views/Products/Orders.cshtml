@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+<br/>
+<br />
+<br />
+<h2>Orders</h2>
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <table id="ordrs" >
+        <tr>
+            <th style="color:red;">orderid</th>
+            <th style="color:red;">user name</th>
+            <th style="color:red;">first name</th>
+            <th style="color:red;">last name</th>
+            <th style="color:red;">product id</th>
+            <th style="color:red;">peoduct name</th>
+            <th style="color:red;">user email</th>
+            <th style="color:red;">ordered at</th>
+        </tr>
+    </table>
+<script language="javascript">
+    $.get("getordersJson", null, bindorders);
+    function bindorders(orders)
+    {
+        var x = $("#ordrs");
+        for (i = 0; i < orders.length; i++)
+        {
+            var y = "<tr>" +
+                "<td>" + orders[i].Orderid + "</td>" +
+                "<td>" + orders[i].Ousername + "</td>" +
+                "<td>" + orders[i].Ofname + "</td>" +
+                "<td>" + orders[i].Olname + "</td>" +
+                "<td>" + orders[i].Opid + "</td>" +
+                "<td>" + orders[i].Opname + "</td>" +
+                "<td>" + orders[i].Oemail + "</td>" +
+                "<td>" + orders[i].Odate + "</td>" +
+                "</tr>"
+            x.append(y);          
+        }
+    }
+</script>
+</body>

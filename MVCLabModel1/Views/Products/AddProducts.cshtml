@@ -7,7 +7,9 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-
+<br/>
+<br />
+<br />
     <body>
         <h2>Add New Product</h2>
         <form action="Submit" method="post" />
@@ -24,11 +26,6 @@
                     <td>Product Price</td>
                     <td>@Html.TextBoxFor(m => m.product.price)@Html.ValidationMessageFor(x => x.product.price)</td>
                     </tr>
-                @*<tr>
-                    <td>Product ID</td>
-                    <td>@Html.TextBoxFor(m => m.productId)@Html.ValidationMessax`geFor(x => x.productId)</td>
-
-                </tr>*@
                 <tr>
                     <td>Product Description</td>
                     <td>@Html.TextBoxFor(m => m.product.description)@Html.ValidationMessageFor(x => x.product.description)</td>

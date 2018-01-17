@@ -36,7 +36,9 @@
                         if (Convert.ToBoolean(Session["isadmin"]))
                         {
                             <li>@Html.ActionLink("Add Product to Catalog", "AddProducts", "Products")</li>
+                            <li>@Html.ActionLink("watch Orders", "Orders", "Products")</li>
                         }
+                        <li>@Html.ActionLink("Log out", "Logout", "Login")</li>
 
                     }
                     else
@@ -52,8 +54,9 @@
                             <div class="form-group">
                                 <input type="text" id="teste" name="product_name" data-provide="typehead" class="form-control" placeholder="Search Products" autocomplete="off">
                             </div>
-
-                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                            
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                            
                         }
                     </li>
 
