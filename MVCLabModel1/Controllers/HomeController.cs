@@ -17,6 +17,7 @@ namespace YandM.Controllers
             ProductsDal dal = new ProductsDal();
             Products ordered = (from y in dal.products where y.productId.Equals(pid) select y).ToList<Products>()[0];//grabs the product that was "ordered" from the db into current variable
             Users user = (Session["signedin"] as Users);//the user who comiitted the "buy now" button
+            
             if (user != null && ordered != null)
             {
                 //inserting the order whith all its details to db
@@ -36,7 +37,7 @@ namespace YandM.Controllers
                 {
                     odal.SaveChanges();
                 }
-                catch (DbUpdateException ex)
+                catch (DbUpdateException)
                 {
                     //handle exception
                 }
@@ -48,7 +49,6 @@ namespace YandM.Controllers
 
         public ActionResult ShowHomePage()
         {
-
             return View("ShowHomePage",new ProductsVM() {
             products_list=((new ProductsDal()).products.ToList<Products>())});
         }
