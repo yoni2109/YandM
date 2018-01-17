@@ -26,21 +26,23 @@
     </style>
 </head>
 
-    <div class="grid-container">
-        @if (Model.products_list != null)
-        {
+<div class="grid-container">
+        @if (Model != null && Model.products_list != null)
+        {   int i=0;
             foreach (Products x in Model.products_list)
             {   
-                <form method="post" action="placeOrder">
                     <div class="grid-item">
-                        <div name="pname" value=@x.product_name>@x.product_name</div>                   
+                    <form method="post" action=@Url.Action("placeOrder","Home")>
+                        <input type="hidden" name="pid" value=@x.productId> 
+                        <div name="pname">@x.product_name</div>
                         <img src=@x.img_url
                              width="150" height="150">
                         <div>@x.price $</div>
-                        <input id="Button1" type="submit" value="Buy Now" size="50" />
+                        <input id="Button1" type="submit" value="Buy Now" onclick="return confirm('do you want to place order ?')"/>
+                    </form>
                     </div>
-                </form>
-             }
+                i++; 
+            }
         }
 </div>
 
