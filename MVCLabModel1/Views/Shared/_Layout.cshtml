@@ -23,12 +23,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    
-                    
-                    
+
+
+
                     <li>@Html.ActionLink("Dogs", "Dogs", "Products")</li>
                     <li>@Html.ActionLink("Cats", "Cats", "Products")</li>
-                    
+
                     @if (Session["signedin"] != null)
                     {
                         string welcome = "Welcome " + (Session["signedin"] as Users).UserName;
@@ -43,17 +43,19 @@
                     {
                         <li>@Html.ActionLink("Login", "Login", "Login")</li>
                         <li>@Html.ActionLink("Sign-up", "Signup", "Login")</li>
-                        @*<li><input id="Text1" type="text" placeholder="Search Products"/></li>
-                        <li><input id="Button1" type="button" value="Search" onclick="location.href=
-                                   @Url.Action("search","Products")'" /></li>*@
-                        @*<li>
-                            <form action="search" method="post">
-                                @Html.TextBoxFor(m => m.Products.product_name)
-
-                            </form>
-                        </li>*@
-
+                        
                     }
+                    <li>
+                        @using (Html.BeginForm("search", "Products"))
+                        {
+
+                            <div class="form-group">
+                                <input type="text" id="teste" name="product_name" data-provide="typehead" class="form-control" placeholder="Search Products" autocomplete="off">
+                            </div>
+
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        }
+                    </li>
 
                 </ul>
 

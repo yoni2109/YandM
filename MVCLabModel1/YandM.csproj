@@ -199,6 +199,7 @@
     <Content Include="Views\Products\Cats.cshtml" />
     <Content Include="Views\Products\AddProducts.cshtml" />
     <Content Include="Views\Products\search.cshtml" />
+    <Content Include="Views\Products\DisplayProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
