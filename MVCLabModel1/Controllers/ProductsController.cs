@@ -35,6 +35,11 @@ namespace MVCLabModel1.Controllers
         }
         public ActionResult AddProducts()//called when manager clicks the Add product to catalog label on page layout and returns a view and sending the view the products that in db
         {
+            bool admin = Convert.ToBoolean(Session["isadmin"]);
+            if (!admin || admin == null)
+            {
+                return HttpNotFound();
+            }
             return View(new ProductsVM() { products_list = (new ProductsDal()).products.ToList<Products>() });
         }
         public ActionResult Submit()//action result for submiiting an add product form (only admin)
@@ -70,6 +75,11 @@ namespace MVCLabModel1.Controllers
 
         public ActionResult Orders()
         {
+            bool admin = Convert.ToBoolean(Session["isadmin"]);
+            if (!admin || admin == null)
+            {
+                return HttpNotFound();
+            }
             return View();
         }
 
