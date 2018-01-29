@@ -2,14 +2,21 @@
 @using YandM.Models
 @{
     ViewBag.Title = "Welcome to Y&M pet shop";
-    if(ViewBag.succeded != null)
+    if (ViewBag.succeded != null)
     {
-        
+        if (ViewBag.succeded == "you must login to submit an order pls login and try again")
+        {
+            <script language="javascript">alert('you must login to submit an order pls login and try again')</script>
+                <div></div>
+        }
+        else
+        {
     <script language="javascript">alert('order submited succesfully, our team will contact you soon')</script>
         <div></div>
-        ViewBag.succeded = null;
+         }
+            ViewBag.succeded = null;
+        }
     }
-}
 
 <script src="~/Scripts/jquery-3.2.1.js"></script>
 <script src="~/Scripts/jquery.validate.js"></script>

@@ -28,7 +28,7 @@ namespace YandM.Controllers
                (from y in dal.users
                where y.UserName.Equals(rcvUserName)
                 select y).ToList<Users>();
-            if(usrobj[0].UserPassword == rcvPassword) //checks for password equality in db
+            if(usrobj.Count > 0 && usrobj[0].UserPassword == rcvPassword) //checks for password equality in db
             {
                 AdminDal adal = new AdminDal();
                 List<Admin> adminlist = (from x in adal.admin where x.AUserName.Equals(rcvUserName) select x).ToList<Admin>();//checking if loged user is admin

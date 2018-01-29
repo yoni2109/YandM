@@ -43,6 +43,10 @@ namespace YandM.Controllers
                 }
                 ViewBag.succeded = "order submited succesfully, our team will contact you soon";
             }
+            else
+            {
+                ViewBag.succeded = "you must login to submit an order pls login and try again";
+            }
 
             return ShowHomePage();
         }
